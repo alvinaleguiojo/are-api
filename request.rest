@@ -1,0 +1,21 @@
+@hostname = http://localhost
+@port = 3002
+@host = {{hostname}}:{{port}}
+@contentType = application/json
+
+
+POST {{host}}/contact HTTP/1.1
+content-type: application/json
+
+ {
+      "firstname": "alvs5",
+      "lastname": "test5",
+      "address": "aleguiojo5",
+      "phone": "0923232",
+      "note": "test note",
+      "vaccine": true,
+      "immunization": true,
+      "prenatal": true,
+      "schedule": "2022-09-04T16:00:00.000Z",
+      "pass"
+}
