@@ -9,4 +9,15 @@ const connection = mysql.createConnection({
   database: process.env.database,
 });
 
+// Close the connection when the app closes
+process.on("SIGINT", () => {
+  connection.end((error) => {
+    if (error) {
+      console.error(error);
+    } else {
+      console.log("MySQL connection closed.");
+    }
+  });
+});
+
 module.exports = connection;

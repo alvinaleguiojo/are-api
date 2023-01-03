@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const contacts = require("./api/contacts/index");
 const add_contact = require("./api/contacts/add_contact/index");
+const update_contact = require("./api/contacts/update_status/index");
 const cors = require("cors");
 
 // to check if the user is authorized
@@ -11,8 +12,9 @@ app.use(cors());
 app.use(express.json());
 
 // controllers
-app.use("/api/contacts", Auth, contacts);
-app.use("/api/contacts/add_contact", Auth, add_contact);
+app.use(Auth, contacts);
+app.use(Auth, add_contact);
+app.use(Auth, update_contact);
 
 app.get("/", Auth, async (req, res) => {
   res.json({

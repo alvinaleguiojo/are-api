@@ -15,7 +15,7 @@ This API ENDPOINT is use for internal projects with Jundave Wamar.
 #### Add New Contact
 
 ```http
-  POST /api/product
+  POST /api/contacts/add_contact
 ```
 
 | Parameter | Type     | Description                |

@@ -3,7 +3,7 @@ const router = express.Router();
 
 const AddNewContact = require("../../../queries/contacts/add_contact/index");
 
-router.post("/", async function (req, res) {
+router.post("/api/contacts/add_contact", async function (req, res) {
   const { Formname, Fullname, Number, Email, Message } = req.body;
 
   try {

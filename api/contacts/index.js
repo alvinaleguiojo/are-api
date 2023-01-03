@@ -5,7 +5,7 @@ const router = express.Router();
 const ContactList = require("../../queries/contacts");
 
 // api request to get all the contacts list
-router.get("/", async (req, res, next) => {
+router.get("/api/contacts", async (req, res, next) => {
   try {
     const resuls = await ContactList();
     res.status(200).json({ contacts: resuls });
