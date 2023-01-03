@@ -7,7 +7,7 @@ router.post("/", async function (req, res) {
   const { Formname, Fullname, Number, Email, Message } = req.body;
 
   try {
-    const response = await AddNewContact({
+    await AddNewContact({
       Formname,
       Fullname,
       Number,
