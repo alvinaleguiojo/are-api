@@ -13,12 +13,12 @@ router.get("/api/contacts", async (req, res, next) => {
   if (data) {
     // If the data is in the cache, send it to the client
     res.send(data);
-    console.log("chached data is triggered..");
+    console.log("cached data is triggered..");
   } else {
     // If the data is not in the cache, fetch it from the database
     // and store it in the cache
     try {
-      console.log("first time to chache data..");
+      console.log("first time to cache the data..");
       const resuls = await ContactList();
       cache.set("key", resuls);
       res.status(200).json({ contacts: resuls });
