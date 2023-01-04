@@ -1,18 +1,32 @@
 const express = require("express");
 const router = express.Router();
+const NodeCache = require("node-cache");
+const cache = new NodeCache({ stdTTL: 60 });
 
 // initialize the contacts list request
 const ContactList = require("../../queries/contacts");
 
 // api request to get all the contacts list
 router.get("/api/contacts", async (req, res, next) => {
-  try {
-    const resuls = await ContactList();
-    res.status(200).json({ contacts: resuls });
-  } catch (error) {
-    res
-      .sendStatus(400)
-      .json({ error: "There's something wrong.Please check your request" });
+  const data = cache.get("key");
+
+  if (data) {
+    // If the data is in the cache, send it to the client
+    res.send(data);
+    console.log("chached data is triggered..");
+  } else {
+    // If the data is not in the cache, fetch it from the database
+    // and store it in the cache
+    try {
+      console.log("first time to chache data..");
+      const resuls = await ContactList();
+      cache.set("key", resuls);
+      res.status(200).json({ contacts: resuls });
+    } catch (error) {
+      res
+        .sendStatus(400)
+        .json({ error: "There's something wrong.Please check your request" });
+    }
   }
 });
 

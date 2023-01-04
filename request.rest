@@ -3,19 +3,20 @@
 @host = {{hostname}}:{{port}}
 @contentType = application/json
 
+@access-token = supersecretkey
 
-POST {{host}}/contact HTTP/1.1
-content-type: application/json
+# POST {{host}}/api/contacts/add_contact HTTP/1.1
+# content-type: {{contentType}}
+# access-token: {{access-token}}
 
- {
-      "firstname": "alvs5",
-      "lastname": "test5",
-      "address": "aleguiojo5",
-      "phone": "0923232",
-      "note": "test note",
-      "vaccine": true,
-      "immunization": true,
-      "prenatal": true,
-      "schedule": "2022-09-04T16:00:00.000Z",
-      "pass"
-}
+#  {
+#       "Formname":"test4 for data chaching",
+#       "Fullname":"chinging4 mechanism ", 
+#       "Number":"123456", 
+#       "Email":"chache4@gmail.com", 
+#       "Message":"hello message cache4"
+# }
+
+GET {{host}}/api/contacts HTTP/1.1
+content-type: {{contentType}}
+access-token: {{access-token}}
