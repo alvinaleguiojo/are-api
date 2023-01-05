@@ -4,6 +4,7 @@ const contacts = require("./api/contacts/index");
 const add_contact = require("./api/contacts/add_contact/index");
 const update_contact = require("./api/contacts/update_status/index");
 const cors = require("cors");
+const getProxified = require("./proxy/index");
 
 // to check if the user is authorized
 const Auth = require("./middleware/Auth");
@@ -12,7 +13,7 @@ app.use(cors());
 app.use(express.json());
 
 // controllers
-app.use(Auth, contacts);
+app.use(Auth, contacts, getProxified);
 app.use(Auth, add_contact);
 app.use(Auth, update_contact);
 
@@ -25,5 +26,5 @@ app.get("/", Auth, async (req, res) => {
 });
 
 app.listen(3002, () => {
-  console.log("Server listening on port 3000");
+  console.log(`Server listening http://localhost:3002 🚀🚀🚀`);
 });

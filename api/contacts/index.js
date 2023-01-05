@@ -19,9 +19,9 @@ router.get("/api/contacts", async (req, res, next) => {
     // and store it in the cache
     try {
       console.log("first time to cache the data..");
-      const resuls = await ContactList();
-      cache.set("key", resuls);
-      res.status(200).json({ contacts: resuls });
+      const results = await ContactList();
+      cache.set("key", results);
+      res.status(200).json({ contacts: results });
     } catch (error) {
       res
         .sendStatus(400)
